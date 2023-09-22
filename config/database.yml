@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: bookmarkapi_development
+  username: postgres
+  password: 719171
+
+test:
+  <<: *default
+  database: bookmarkapi_test
+  username: postgres
+  password: 719171
+
+production:
+  <<: *default
+  database: bookmarkapi_production
+  username: bookmarkapi
+  password: <%= ENV["BOOKMARKAPI_DATABASE_PASSWORD"] %>
